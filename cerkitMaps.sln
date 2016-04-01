@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cerkitMaps", "cerkitMaps\cerkitMaps.csproj", "{0A6D7ABF-C1D8-48ED-BCC6-DCE63248025A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{89C7C4C8-738D-4DE1-A463-AAC0CF396464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{18B66F62-95CA-45C3-9D64-E3153EFFCEE3}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{05B32CB4-DF1D-40A2-8EE2-B37D7FDD20E3}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\cerkitMaps.json = PublishScripts\Templates\cerkitMaps.json
+		PublishScripts\Templates\cerkitMaps.param.dev.json = PublishScripts\Templates\cerkitMaps.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A6D7ABF-C1D8-48ED-BCC6-DCE63248025A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6D7ABF-C1D8-48ED-BCC6-DCE63248025A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6D7ABF-C1D8-48ED-BCC6-DCE63248025A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6D7ABF-C1D8-48ED-BCC6-DCE63248025A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18B66F62-95CA-45C3-9D64-E3153EFFCEE3} = {89C7C4C8-738D-4DE1-A463-AAC0CF396464}
+		{05B32CB4-DF1D-40A2-8EE2-B37D7FDD20E3} = {89C7C4C8-738D-4DE1-A463-AAC0CF396464}
+	EndGlobalSection
+EndGlobal

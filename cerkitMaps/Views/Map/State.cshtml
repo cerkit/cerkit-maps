@@ -1,0 +1,24 @@
+﻿@{
+    var port = Request.Url.Port != 80 ? ":" + Request.Url.Port.ToString() : "";
+    var baseUrl = Request.IsSecureConnection ? "https://" : "http://" + Request.Url.Host + port;
+    var apiRootRelative = VirtualPathUtility.Combine("/", "/api");
+    var apiUrl = baseUrl + apiRootRelative;
+    var shapeUrl = apiUrl + "/Map/StateShape?state=" + ViewBag.StateId;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div id="mapContainer"></div>
+    </div>
+    <div></div>
+</div>
+@section scripts {
+    <script src="~/Scripts/App/map.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        initMap('@shapeUrl');
+    });
+    </script>
+}
+<!-- change 
+    
+    -->
