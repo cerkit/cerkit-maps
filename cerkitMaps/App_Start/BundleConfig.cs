@@ -20,7 +20,7 @@ namespace cerkitMaps
                       "~/Scripts/devextreme-modules/dx.module-core.debug.js",
                       "~/Scripts/devextreme-modules/dx.module-viz-core.debug.js",
                       "~/Scripts/devextreme-modules/dx.module-viz-charts.debug.js",
-                      "~/Scripts/devextreme-modules/dx.module-viz-vectormap.debug",
+                      "~/Scripts/devextreme-modules/dx.module-viz-vectormap.debug.js",
                       "~/Scripts/devextreme-modules/vectormap-utils/dx.vectormaputils.debug.js"                      
                       ));
 
