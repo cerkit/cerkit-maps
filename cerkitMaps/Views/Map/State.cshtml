@@ -1,9 +1,9 @@
 ﻿@{
-    var port = Request.Url.Port != 80 ? ":" + Request.Url.Port.ToString() : "";
-    var baseUrl = Request.IsSecureConnection ? "https://" : "http://" + Request.Url.Host + port;
-    var apiRootRelative = VirtualPathUtility.Combine("/", "/api");
-    var apiUrl = baseUrl + apiRootRelative;
-    var shapeUrl = apiUrl + "/Map/StateShape?state=" + ViewBag.StateId;
+	var port = Request.Url.Port != 80 ? ":" + Request.Url.Port.ToString() : "";
+	var baseUrl = Request.IsSecureConnection ? "https://" : "http://" + Request.Url.Host + port;
+	var apiRoot = VirtualPathUtility.ToAbsolute("~/api");
+	var apiUrl = baseUrl + apiRoot;
+	var shapeUrl = apiUrl + "/Map";
 }
 <div class="row">
     <div class="col-md-12">

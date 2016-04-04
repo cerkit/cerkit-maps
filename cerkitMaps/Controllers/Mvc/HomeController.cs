@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace cerkitMaps.Controllers
+namespace cerkitMaps.Controllers.Mvc
 {
     public class HomeController : Controller
     {
