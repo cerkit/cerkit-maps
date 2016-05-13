@@ -1,0 +1,75 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Map with Alabama School Districts Overlay</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			height: 100%;
+		}
+	</style>
+	<script src="~/Scripts/jquery-1.11.3.min.js"></script>
+	<script src="~/Scripts/jquery.globalize/globalize.js"></script>
+	<script src="~/Scripts/dx.all.debug.js"></script>
+	<link href="~/Content/dx.common.css" rel="stylesheet" />
+	<link href="~/Content/dx.light.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="map"></div>
+	<div id="districtTooltip"></div>
+	<script>
+        var map;
+        var mapDataUrl = '@Url.Content("~/Assets/AL-SchoolDistricts-GeoJson-hires.js")';
+
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 32.3783809, lng: -86.2995041 },
+                zoom: 7
+            });
+
+            map.data.loadGeoJson(mapDataUrl);
+
+            // Set the global styles.
+            map.data.setStyle({
+                fillColor: '#FFCC33',
+                strokeWeight: 1,
+                strokeOpacity: 0.4
+            });
+
+            // When the user hovers, change the color.
+            // Call revertStyle() to remove all overrides. This will use the style rules
+            // defined in the function passed to setStyle()
+            map.data.addListener('mouseover', function (event) {
+                map.data.revertStyle();
+                map.data.overrideStyle(event.feature, { fillColor: '#9999FF' });
+            });
+
+            map.data.addListener('mouseout', function (event) {
+                map.data.revertStyle();
+            });
+
+            // When the user clicks, set 'isColorful', changing the color of the letters.
+            map.data.addListener('click', function (event) {
+                //event.feature.setProperty('isColorful', true);
+                var districtName = event.feature.getProperty('NAME');
+                $('#districtTooltip').text(districtName);
+                districtTooltip.show($(event.feature));
+            });
+        }
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsEhyrL4HyL5CPeN_uZH6_v4PhTbRQW2Q&callback=initMap"
+			async defer></script>
+</body>
+</html>

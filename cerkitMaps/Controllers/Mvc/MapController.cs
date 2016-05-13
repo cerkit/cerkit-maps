@@ -23,5 +23,10 @@ namespace cerkitMaps.Controllers.Mvc
 
             return View();
         }
+
+		public ActionResult GoogleMapWithDistricts() 
+		{
+			return View();
+		}
     }
 }

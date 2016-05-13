@@ -17,7 +17,7 @@
     <AssemblyName>cerkitMaps</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\AL-SchoolDistricts-GeoJson-hires.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dx.android5.light.css" />
@@ -674,6 +675,7 @@
     <Content Include="Scripts\jquery-1.11.3.min.map" />
     <Content Include="Views\Map\Index.cshtml" />
     <Content Include="Views\Map\State.cshtml" />
+    <Content Include="Views\Map\GoogleMapWithDistricts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -703,7 +705,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50269</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50269/</IISUrl>
+          <IISUrl>http://mearls.alsde.edu/dev/cerkitMaps</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
