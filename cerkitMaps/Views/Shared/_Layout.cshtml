@@ -4,18 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script type="text/javascript">
-        var appInsights = window.appInsights || function (config) {
-            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
-        }({
-            instrumentationKey: "80cf7311-8c73-466d-b505-dbe8337ccf48"
-        });
-
-        window.appInsights = appInsights;
-        appInsights.trackPageView();
-    </script>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous" defer></script>
+	<script type="text/javascript" src="//cdn3.devexpress.com/jslib/15.2.5/js/dx.webappjs.js" async defer></script>
+	<script type="text/javascript" src="//cdn3.devexpress.com/jslib/15.2.5/js/dx.chartjs.js" async defer></script>
+	<script type="text/javascript" src="//cdn3.devexpress.com/jslib/15.2.5/js/vectormap-utils/dx.vectormaputils.js" async defer></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -34,6 +37,7 @@
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
 					<li>@Html.ActionLink("DevExtreme dxVectorMap Demo", "Index", "Map", new { area = "" }, null)</li>
 					<li>@Html.ActionLink("Google Maps Demo", "GoogleMapWithDistricts", "Map", new { area = "" }, null)</li>
+					<li>@Html.ActionLink("dxVectorMap Demo 2", "State", "Map", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
@@ -45,10 +49,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/devextreme")
     @RenderSection("scripts", required: false)
 </body>
 </html>

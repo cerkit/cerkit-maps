@@ -9,15 +9,17 @@
 	<link href="~/Content/dx.common.css" rel="stylesheet" />
 	<link href="~/Content/dx.light.css" rel="stylesheet" />
 	<link href="~/Content/site.css" rel="stylesheet" />
-	<script src="~/Scripts/jquery-1.11.3.js"></script>
-	<script src="~/Scripts/jquery.globalize/globalize.js"></script>
-	<script src="~/Scripts/dx.webappjs.js"></script>
-	<script src="~/Scripts/dx.chartjs.js"></script>
-	<script src="~/Scripts/devextreme-modules/dx.module-core.js"></script>
-	<script src="~/Scripts/devextreme-modules/dx.module-viz-core.js"></script>
-	<script src="~/Scripts/devextreme-modules/dx.module-viz-charts.js"></script>
-	<script src="~/Scripts/devextreme-modules/dx.module-viz-vectormap.js"></script>
-	<script src="~/Scripts/devextreme-modules/vectormap-utils/dx.vectormaputils.js"></script>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/dx.webappjs.js"></script>
+	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/dx.chartjs.js"></script>
+	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/vectormap-utils/dx.vectormaputils.js"></script>
 	<script type="text/javascript">
         var certs = [];
 
@@ -31,24 +33,11 @@
 
         // start when the document is ready...
         $(function () {
-            // pull the map data from a static .js file that contains a GeoJson-formatted document representing the school systems
-            $.getJSON('Scripts/mapData.js', function (shapeViewModel) {
-                var districtShapeBuffer = _base64ToArrayBuffer(shapeViewModel.Shape),
-                    districtDbfBuffer = _base64ToArrayBuffer(shapeViewModel.Dbf),
-                    parseOptions = { precision: 3 },
-                    districtParseSources = { shp: districtShapeBuffer, dbf: districtDbfBuffer },
-                    districtData = DevExpress.viz.vectormaputils.parse(districtParseSources, parseOptions);
-
+        	DevExpress.viz.vectormaputils.parse('@Url.Content("~/Assets/tl_2015_01_unsd")', { precision: 8 }, function (districtData) {
                 $('#mapContainer').dxVectorMap({
-                    //center: [-86.633333, 32.834722],
                     center: [-87.0, 32.5],
                     bounds: [-80, 33, -92, 33],
                     zoomFactor: 1.85,
-                    onZoomFactorChanged: function (info) {
-                        // show the school overlay only if we're zoomed in far enough
-                        //info.component.getLayerByName("schoolMarkers").size = info.zoomFactor;
-                        //info.component.getLayerByName("schoolMarkers").getElements()[0].applySettings({ size: info.zoomFactor - 2, tooltip: "test" })
-                    },
                     layers: [
                     {
                         name: "systems",
@@ -154,16 +143,6 @@
 
         });
 
-        function _base64ToArrayBuffer(base64) {
-            var binary_string = window.atob(base64);
-            var len = binary_string.length;
-            var bytes = new Uint8Array(len);
-            for (var i = 0; i < len; i++) {
-                bytes[i] = binary_string.charCodeAt(i);
-            }
-            return bytes.buffer;
-        }
-
         var findSystemData = function (systemGeoId, countValuesArray) {
             for (var i = 0, len = countValuesArray.length; i < len; i++) {
                 if (countValuesArray[i].id === systemGeoId)
@@ -191,9 +170,7 @@
 			<div>
 				<em>Note: you can also use your mouse wheel to zoom the map.</em>
 			</div>
-			<div id="mapContainer">
-
-			</div>
+			<div id="mapContainer"></div>
 			<div>
 				<textarea id="txtColors"></textarea>
 			</div>

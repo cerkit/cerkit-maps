@@ -1,14 +1,7 @@
-﻿function initMap(shapeUrl) {
-
-    $.getJSON(shapeUrl, function (shapeViewModel) {
-        var shapeBuffer = _base64ToArrayBuffer(shapeViewModel.shape),
-        dbfBuffer = _base64ToArrayBuffer(shapeViewModel.dbf);
-        var parseSources = { shp: shapeBuffer, dbf: dbfBuffer },
-        parseOptions = { precision: 4 },
-        data = DevExpress.viz.vectormaputils.parse(parseSources, parseOptions);
-
+﻿function initMap(shapePath) {
+	DevExpress.viz.vectormaputils.parse(shapePath, { precision: 4 }, function (data) {
         $('#mapContainer').dxVectorMap({
-            zoomFactor: 3,
+        	bounds: [data.bbox[0] - 2.8, data.bbox[1] - 3, data.bbox[2] - 0.25, data.bbox[3] + 3],
             layers: [{
                 type: 'area',
                 data: data,
@@ -18,14 +11,4 @@
             }]
         });
     });
-}
-
-function _base64ToArrayBuffer(base64) {
-    var binary_string = window.atob(base64);
-    var len = binary_string.length;
-    var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++) {
-        bytes[i] = binary_string.charCodeAt(i);
-    }
-    return bytes.buffer;
 }

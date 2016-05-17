@@ -263,6 +263,8 @@
     <Content Include="Assets\tl_2010_13_county10.shp" />
     <Content Include="Assets\tl_2010_01_county10.dbf" />
     <Content Include="Assets\tl_2010_01_county10.shp" />
+    <Content Include="Assets\tl_2015_01_unsd.dbf" />
+    <Content Include="Assets\tl_2015_01_unsd.shp" />
     <None Include="Properties\PublishProfiles\cerkitMaps.pubxml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.webappjs.de.js" />
