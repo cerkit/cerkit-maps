@@ -1,180 +1,160 @@
-﻿@{
-	Layout = null;
-}
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<title>Indicator</title>
-	<link href="~/Content/dx.common.css" rel="stylesheet" />
-	<link href="~/Content/dx.light.css" rel="stylesheet" />
-	<link href="~/Content/site.css" rel="stylesheet" />
-	<meta charset="utf-8" />
-	<!--[if lt IE 9]>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<![endif]-->
-	<!--[if gte IE 9]><!-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<!--<![endif]-->
-	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
-	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/dx.webappjs.js"></script>
-	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/dx.chartjs.js"></script>
-	<script type="text/javascript" src="http://cdn3.devexpress.com/jslib/15.2.5/js/vectormap-utils/dx.vectormaputils.js"></script>
-	<script type="text/javascript">
-        var certs = [];
-
-        // select list items that also contain fake certificate counts
-        var selectItems = [
-            { id: 0, name: "Counselor Certificates", values: [{ "id": "0100001", "value": 484 }, { "id": "0100003", "value": 597 }, { "id": "0100005", "value": 357 }, { "id": "0100006", "value": 406 }, { "id": "0100007", "value": 544 }, { "id": "0100008", "value": 565 }, { "id": "0100011", "value": 306 }, { "id": "0100012", "value": 553 }, { "id": "0100013", "value": 508 }, { "id": "0100030", "value": 546 }, { "id": "0100060", "value": 200 }, { "id": "0100090", "value": 307 }, { "id": "0100100", "value": 234 }, { "id": "0100120", "value": 101 }, { "id": "0100180", "value": 437 }, { "id": "0100185", "value": 223 }, { "id": "0100188", "value": 29 }, { "id": "0100189", "value": 571 }, { "id": "0100190", "value": 133 }, { "id": "0100210", "value": 383 }, { "id": "0100240", "value": 450 }, { "id": "0100270", "value": 294 }, { "id": "0100300", "value": 504 }, { "id": "0100330", "value": 292 }, { "id": "0100360", "value": 26 }, { "id": "0100390", "value": 92 }, { "id": "0100420", "value": 53 }, { "id": "0100450", "value": 201 }, { "id": "0100480", "value": 520 }, { "id": "0100510", "value": 469 }, { "id": "0100540", "value": 138 }, { "id": "0100600", "value": 321 }, { "id": "0100630", "value": 158 }, { "id": "0100660", "value": 489 }, { "id": "0100690", "value": 454 }, { "id": "0100720", "value": 250 }, { "id": "0100750", "value": 248 }, { "id": "0100780", "value": 520 }, { "id": "0100810", "value": 292 }, { "id": "0100840", "value": 94 }, { "id": "0100870", "value": 488 }, { "id": "0100900", "value": 224 }, { "id": "0100930", "value": 238 }, { "id": "0100960", "value": 266 }, { "id": "0100990", "value": 4 }, { "id": "0101020", "value": 110 }, { "id": "0101050", "value": 349 }, { "id": "0101080", "value": 80 }, { "id": "0101110", "value": 327 }, { "id": "0101140", "value": 141 }, { "id": "0101170", "value": 464 }, { "id": "0101200", "value": 304 }, { "id": "0101230", "value": 233 }, { "id": "0101260", "value": 87 }, { "id": "0101290", "value": 523 }, { "id": "0101320", "value": 412 }, { "id": "0101350", "value": 39 }, { "id": "0101380", "value": 466 }, { "id": "0101410", "value": 282 }, { "id": "0101440", "value": 235 }, { "id": "0101470", "value": 511 }, { "id": "0101530", "value": 572 }, { "id": "0101560", "value": 407 }, { "id": "0101590", "value": 15 }, { "id": "0101620", "value": 597 }, { "id": "0101640", "value": 359 }, { "id": "0101660", "value": 286 }, { "id": "0101680", "value": 463 }, { "id": "0101690", "value": 198 }, { "id": "0101710", "value": 5 }, { "id": "0101720", "value": 585 }, { "id": "0101730", "value": 88 }, { "id": "0101740", "value": 367 }, { "id": "0101760", "value": 543 }, { "id": "0101770", "value": 432 }, { "id": "0101800", "value": 484 }, { "id": "0101830", "value": 428 }, { "id": "0101860", "value": 93 }, { "id": "0101890", "value": 136 }, { "id": "0101920", "value": 348 }, { "id": "0101950", "value": 316 }, { "id": "0101980", "value": 310 }, { "id": "0102010", "value": 143 }, { "id": "0102040", "value": 367 }, { "id": "0102070", "value": 97 }, { "id": "0102100", "value": 323 }, { "id": "0102130", "value": 117 }, { "id": "0102160", "value": 307 }, { "id": "0102190", "value": 329 }, { "id": "0102220", "value": 471 }, { "id": "0102250", "value": 590 }, { "id": "0102310", "value": 148 }, { "id": "0102350", "value": 336 }, { "id": "0102370", "value": 18 }, { "id": "0102400", "value": 338 }, { "id": "0102430", "value": 374 }, { "id": "0102480", "value": 314 }, { "id": "0102490", "value": 232 }, { "id": "0102520", "value": 99 }, { "id": "0102550", "value": 201 }, { "id": "0102580", "value": 173 }, { "id": "0102610", "value": 528 }, { "id": "0102635", "value": 49 }, { "id": "0102640", "value": 117 }, { "id": "0102650", "value": 123 }, { "id": "0102670", "value": 256 }, { "id": "0102700", "value": 320 }, { "id": "0102730", "value": 511 }, { "id": "0102760", "value": 1 }, { "id": "0102790", "value": 234 }, { "id": "0102820", "value": 374 }, { "id": "0102850", "value": 340 }, { "id": "0102880", "value": 396 }, { "id": "0102910", "value": 440 }, { "id": "0102940", "value": 545 }, { "id": "0102970", "value": 11 }, { "id": "0103000", "value": 266 }, { "id": "0103030", "value": 503 }, { "id": "0103062", "value": 214 }, { "id": "0103090", "value": 15 }, { "id": "0103120", "value": 414 }, { "id": "0103150", "value": 532 }, { "id": "0103180", "value": 3 }, { "id": "0103210", "value": 167 }, { "id": "0103240", "value": 168 }, { "id": "0103270", "value": 276 }, { "id": "0103300", "value": 321 }, { "id": "0103330", "value": 271 }, { "id": "0103360", "value": 82 }, { "id": "0103390", "value": 351 }, { "id": "0103420", "value": 47 }, { "id": "0103430", "value": 310 }, { "id": "0103450", "value": 296 }, { "id": "0103480", "value": 464 }, { "id": "0103510", "value": 217 }, { "id": "0103540", "value": 514 }, { "id": "0103580", "value": 332 }] },
-            { id: 1, name: "Math Teacher Certifications", values: [{ "id": "0100001", "value": 358 }, { "id": "0100003", "value": 582 }, { "id": "0100005", "value": 465 }, { "id": "0100006", "value": 427 }, { "id": "0100007", "value": 475 }, { "id": "0100008", "value": 5 }, { "id": "0100011", "value": 272 }, { "id": "0100012", "value": 55 }, { "id": "0100013", "value": 367 }, { "id": "0100030", "value": 501 }, { "id": "0100060", "value": 18 }, { "id": "0100090", "value": 133 }, { "id": "0100100", "value": 322 }, { "id": "0100120", "value": 555 }, { "id": "0100180", "value": 252 }, { "id": "0100185", "value": 409 }, { "id": "0100188", "value": 501 }, { "id": "0100189", "value": 523 }, { "id": "0100190", "value": 447 }, { "id": "0100210", "value": 428 }, { "id": "0100240", "value": 135 }, { "id": "0100270", "value": 341 }, { "id": "0100300", "value": 293 }, { "id": "0100330", "value": 103 }, { "id": "0100360", "value": 155 }, { "id": "0100390", "value": 296 }, { "id": "0100420", "value": 93 }, { "id": "0100450", "value": 331 }, { "id": "0100480", "value": 108 }, { "id": "0100510", "value": 272 }, { "id": "0100540", "value": 302 }, { "id": "0100600", "value": 399 }, { "id": "0100630", "value": 67 }, { "id": "0100660", "value": 471 }, { "id": "0100690", "value": 449 }, { "id": "0100720", "value": 18 }, { "id": "0100750", "value": 359 }, { "id": "0100780", "value": 140 }, { "id": "0100810", "value": 67 }, { "id": "0100840", "value": 195 }, { "id": "0100870", "value": 63 }, { "id": "0100900", "value": 417 }, { "id": "0100930", "value": 222 }, { "id": "0100960", "value": 411 }, { "id": "0100990", "value": 123 }, { "id": "0101020", "value": 146 }, { "id": "0101050", "value": 8 }, { "id": "0101080", "value": 143 }, { "id": "0101110", "value": 50 }, { "id": "0101140", "value": 212 }, { "id": "0101170", "value": 438 }, { "id": "0101200", "value": 475 }, { "id": "0101230", "value": 587 }, { "id": "0101260", "value": 404 }, { "id": "0101290", "value": 512 }, { "id": "0101320", "value": 376 }, { "id": "0101350", "value": 1 }, { "id": "0101380", "value": 222 }, { "id": "0101410", "value": 268 }, { "id": "0101440", "value": 472 }, { "id": "0101470", "value": 553 }, { "id": "0101530", "value": 429 }, { "id": "0101560", "value": 91 }, { "id": "0101590", "value": 573 }, { "id": "0101620", "value": 397 }, { "id": "0101640", "value": 9 }, { "id": "0101660", "value": 246 }, { "id": "0101680", "value": 50 }, { "id": "0101690", "value": 412 }, { "id": "0101710", "value": 16 }, { "id": "0101720", "value": 402 }, { "id": "0101730", "value": 550 }, { "id": "0101740", "value": 100 }, { "id": "0101760", "value": 560 }, { "id": "0101770", "value": 93 }, { "id": "0101800", "value": 274 }, { "id": "0101830", "value": 389 }, { "id": "0101860", "value": 571 }, { "id": "0101890", "value": 539 }, { "id": "0101920", "value": 566 }, { "id": "0101950", "value": 528 }, { "id": "0101980", "value": 171 }, { "id": "0102010", "value": 3 }, { "id": "0102040", "value": 208 }, { "id": "0102070", "value": 299 }, { "id": "0102100", "value": 400 }, { "id": "0102130", "value": 361 }, { "id": "0102160", "value": 410 }, { "id": "0102190", "value": 22 }, { "id": "0102220", "value": 355 }, { "id": "0102250", "value": 552 }, { "id": "0102310", "value": 228 }, { "id": "0102350", "value": 385 }, { "id": "0102370", "value": 302 }, { "id": "0102400", "value": 440 }, { "id": "0102430", "value": 525 }, { "id": "0102480", "value": 173 }, { "id": "0102490", "value": 439 }, { "id": "0102520", "value": 567 }, { "id": "0102550", "value": 208 }, { "id": "0102580", "value": 297 }, { "id": "0102610", "value": 287 }, { "id": "0102635", "value": 329 }, { "id": "0102640", "value": 78 }, { "id": "0102650", "value": 461 }, { "id": "0102670", "value": 486 }, { "id": "0102700", "value": 110 }, { "id": "0102730", "value": 504 }, { "id": "0102760", "value": 162 }, { "id": "0102790", "value": 250 }, { "id": "0102820", "value": 532 }, { "id": "0102850", "value": 432 }, { "id": "0102880", "value": 472 }, { "id": "0102910", "value": 385 }, { "id": "0102940", "value": 285 }, { "id": "0102970", "value": 306 }, { "id": "0103000", "value": 134 }, { "id": "0103030", "value": 342 }, { "id": "0103062", "value": 253 }, { "id": "0103090", "value": 238 }, { "id": "0103120", "value": 237 }, { "id": "0103150", "value": 237 }, { "id": "0103180", "value": 595 }, { "id": "0103210", "value": 122 }, { "id": "0103240", "value": 252 }, { "id": "0103270", "value": 51 }, { "id": "0103300", "value": 44 }, { "id": "0103330", "value": 199 }, { "id": "0103360", "value": 511 }, { "id": "0103390", "value": 363 }, { "id": "0103420", "value": 581 }, { "id": "0103430", "value": 173 }, { "id": "0103450", "value": 49 }, { "id": "0103480", "value": 113 }, { "id": "0103510", "value": 443 }, { "id": "0103540", "value": 208 }, { "id": "0103580", "value": 108 }] },
-            { id: 2, name: "Bus Driver Certifications", values: [{ "id": "0100001", "value": 509 }, { "id": "0100003", "value": 550 }, { "id": "0100005", "value": 315 }, { "id": "0100006", "value": 210 }, { "id": "0100007", "value": 124 }, { "id": "0100008", "value": 158 }, { "id": "0100011", "value": 4 }, { "id": "0100012", "value": 232 }, { "id": "0100013", "value": 291 }, { "id": "0100030", "value": 504 }, { "id": "0100060", "value": 384 }, { "id": "0100090", "value": 542 }, { "id": "0100100", "value": 361 }, { "id": "0100120", "value": 519 }, { "id": "0100180", "value": 451 }, { "id": "0100185", "value": 476 }, { "id": "0100188", "value": 523 }, { "id": "0100189", "value": 89 }, { "id": "0100190", "value": 527 }, { "id": "0100210", "value": 413 }, { "id": "0100240", "value": 570 }, { "id": "0100270", "value": 373 }, { "id": "0100300", "value": 580 }, { "id": "0100330", "value": 543 }, { "id": "0100360", "value": 210 }, { "id": "0100390", "value": 4 }, { "id": "0100420", "value": 588 }, { "id": "0100450", "value": 432 }, { "id": "0100480", "value": 333 }, { "id": "0100510", "value": 74 }, { "id": "0100540", "value": 434 }, { "id": "0100600", "value": 587 }, { "id": "0100630", "value": 164 }, { "id": "0100660", "value": 340 }, { "id": "0100690", "value": 304 }, { "id": "0100720", "value": 573 }, { "id": "0100750", "value": 208 }, { "id": "0100780", "value": 216 }, { "id": "0100810", "value": 220 }, { "id": "0100840", "value": 120 }, { "id": "0100870", "value": 345 }, { "id": "0100900", "value": 386 }, { "id": "0100930", "value": 565 }, { "id": "0100960", "value": 552 }, { "id": "0100990", "value": 143 }, { "id": "0101020", "value": 266 }, { "id": "0101050", "value": 303 }, { "id": "0101080", "value": 180 }, { "id": "0101110", "value": 118 }, { "id": "0101140", "value": 112 }, { "id": "0101170", "value": 534 }, { "id": "0101200", "value": 498 }, { "id": "0101230", "value": 570 }, { "id": "0101260", "value": 220 }, { "id": "0101290", "value": 526 }, { "id": "0101320", "value": 409 }, { "id": "0101350", "value": 266 }, { "id": "0101380", "value": 318 }, { "id": "0101410", "value": 96 }, { "id": "0101440", "value": 38 }, { "id": "0101470", "value": 307 }, { "id": "0101530", "value": 385 }, { "id": "0101560", "value": 308 }, { "id": "0101590", "value": 457 }, { "id": "0101620", "value": 366 }, { "id": "0101640", "value": 183 }, { "id": "0101660", "value": 577 }, { "id": "0101680", "value": 287 }, { "id": "0101690", "value": 451 }, { "id": "0101710", "value": 39 }, { "id": "0101720", "value": 31 }, { "id": "0101730", "value": 433 }, { "id": "0101740", "value": 102 }, { "id": "0101760", "value": 407 }, { "id": "0101770", "value": 164 }, { "id": "0101800", "value": 270 }, { "id": "0101830", "value": 485 }, { "id": "0101860", "value": 455 }, { "id": "0101890", "value": 378 }, { "id": "0101920", "value": 287 }, { "id": "0101950", "value": 477 }, { "id": "0101980", "value": 436 }, { "id": "0102010", "value": 263 }, { "id": "0102040", "value": 562 }, { "id": "0102070", "value": 586 }, { "id": "0102100", "value": 269 }, { "id": "0102130", "value": 39 }, { "id": "0102160", "value": 443 }, { "id": "0102190", "value": 214 }, { "id": "0102220", "value": 404 }, { "id": "0102250", "value": 105 }, { "id": "0102310", "value": 268 }, { "id": "0102350", "value": 4 }, { "id": "0102370", "value": 224 }, { "id": "0102400", "value": 11 }, { "id": "0102430", "value": 220 }, { "id": "0102480", "value": 370 }, { "id": "0102490", "value": 213 }, { "id": "0102520", "value": 300 }, { "id": "0102550", "value": 99 }, { "id": "0102580", "value": 482 }, { "id": "0102610", "value": 185 }, { "id": "0102635", "value": 26 }, { "id": "0102640", "value": 536 }, { "id": "0102650", "value": 155 }, { "id": "0102670", "value": 29 }, { "id": "0102700", "value": 60 }, { "id": "0102730", "value": 322 }, { "id": "0102760", "value": 549 }, { "id": "0102790", "value": 391 }, { "id": "0102820", "value": 252 }, { "id": "0102850", "value": 498 }, { "id": "0102880", "value": 523 }, { "id": "0102910", "value": 338 }, { "id": "0102940", "value": 484 }, { "id": "0102970", "value": 494 }, { "id": "0103000", "value": 588 }, { "id": "0103030", "value": 517 }, { "id": "0103062", "value": 171 }, { "id": "0103090", "value": 486 }, { "id": "0103120", "value": 468 }, { "id": "0103150", "value": 201 }, { "id": "0103180", "value": 524 }, { "id": "0103210", "value": 378 }, { "id": "0103240", "value": 110 }, { "id": "0103270", "value": 350 }, { "id": "0103300", "value": 243 }, { "id": "0103330", "value": 20 }, { "id": "0103360", "value": 347 }, { "id": "0103390", "value": 481 }, { "id": "0103420", "value": 92 }, { "id": "0103430", "value": 493 }, { "id": "0103450", "value": 391 }, { "id": "0103480", "value": 157 }, { "id": "0103510", "value": 423 }, { "id": "0103540", "value": 213 }, { "id": "0103580", "value": 421 }] },
-            { id: 3, name: "Science Teacher Certifications", values: [{ "id": "0100001", "value": 446 }, { "id": "0100003", "value": 197 }, { "id": "0100005", "value": 475 }, { "id": "0100006", "value": 85 }, { "id": "0100007", "value": 382 }, { "id": "0100008", "value": 368 }, { "id": "0100011", "value": 335 }, { "id": "0100012", "value": 260 }, { "id": "0100013", "value": 68 }, { "id": "0100030", "value": 353 }, { "id": "0100060", "value": 51 }, { "id": "0100090", "value": 456 }, { "id": "0100100", "value": 182 }, { "id": "0100120", "value": 287 }, { "id": "0100180", "value": 497 }, { "id": "0100185", "value": 369 }, { "id": "0100188", "value": 144 }, { "id": "0100189", "value": 398 }, { "id": "0100190", "value": 310 }, { "id": "0100210", "value": 593 }, { "id": "0100240", "value": 70 }, { "id": "0100270", "value": 196 }, { "id": "0100300", "value": 92 }, { "id": "0100330", "value": 376 }, { "id": "0100360", "value": 25 }, { "id": "0100390", "value": 431 }, { "id": "0100420", "value": 428 }, { "id": "0100450", "value": 556 }, { "id": "0100480", "value": 592 }, { "id": "0100510", "value": 542 }, { "id": "0100540", "value": 136 }, { "id": "0100600", "value": 129 }, { "id": "0100630", "value": 516 }, { "id": "0100660", "value": 10 }, { "id": "0100690", "value": 41 }, { "id": "0100720", "value": 211 }, { "id": "0100750", "value": 484 }, { "id": "0100780", "value": 279 }, { "id": "0100810", "value": 384 }, { "id": "0100840", "value": 291 }, { "id": "0100870", "value": 440 }, { "id": "0100900", "value": 64 }, { "id": "0100930", "value": 173 }, { "id": "0100960", "value": 174 }, { "id": "0100990", "value": 222 }, { "id": "0101020", "value": 242 }, { "id": "0101050", "value": 412 }, { "id": "0101080", "value": 525 }, { "id": "0101110", "value": 464 }, { "id": "0101140", "value": 336 }, { "id": "0101170", "value": 568 }, { "id": "0101200", "value": 348 }, { "id": "0101230", "value": 542 }, { "id": "0101260", "value": 52 }, { "id": "0101290", "value": 255 }, { "id": "0101320", "value": 334 }, { "id": "0101350", "value": 490 }, { "id": "0101380", "value": 321 }, { "id": "0101410", "value": 222 }, { "id": "0101440", "value": 423 }, { "id": "0101470", "value": 323 }, { "id": "0101530", "value": 279 }, { "id": "0101560", "value": 549 }, { "id": "0101590", "value": 427 }, { "id": "0101620", "value": 341 }, { "id": "0101640", "value": 441 }, { "id": "0101660", "value": 36 }, { "id": "0101680", "value": 349 }, { "id": "0101690", "value": 467 }, { "id": "0101710", "value": 487 }, { "id": "0101720", "value": 356 }, { "id": "0101730", "value": 189 }, { "id": "0101740", "value": 130 }, { "id": "0101760", "value": 111 }, { "id": "0101770", "value": 371 }, { "id": "0101800", "value": 257 }, { "id": "0101830", "value": 571 }, { "id": "0101860", "value": 432 }, { "id": "0101890", "value": 410 }, { "id": "0101920", "value": 511 }, { "id": "0101950", "value": 486 }, { "id": "0101980", "value": 544 }, { "id": "0102010", "value": 1 }, { "id": "0102040", "value": 110 }, { "id": "0102070", "value": 359 }, { "id": "0102100", "value": 292 }, { "id": "0102130", "value": 32 }, { "id": "0102160", "value": 235 }, { "id": "0102190", "value": 283 }, { "id": "0102220", "value": 592 }, { "id": "0102250", "value": 594 }, { "id": "0102310", "value": 120 }, { "id": "0102350", "value": 452 }, { "id": "0102370", "value": 584 }, { "id": "0102400", "value": 212 }, { "id": "0102430", "value": 441 }, { "id": "0102480", "value": 361 }, { "id": "0102490", "value": 305 }, { "id": "0102520", "value": 352 }, { "id": "0102550", "value": 515 }, { "id": "0102580", "value": 198 }, { "id": "0102610", "value": 209 }, { "id": "0102635", "value": 188 }, { "id": "0102640", "value": 243 }, { "id": "0102650", "value": 297 }, { "id": "0102670", "value": 321 }, { "id": "0102700", "value": 27 }, { "id": "0102730", "value": 476 }, { "id": "0102760", "value": 239 }, { "id": "0102790", "value": 374 }, { "id": "0102820", "value": 325 }, { "id": "0102850", "value": 463 }, { "id": "0102880", "value": 73 }, { "id": "0102910", "value": 446 }, { "id": "0102940", "value": 61 }, { "id": "0102970", "value": 356 }, { "id": "0103000", "value": 434 }, { "id": "0103030", "value": 361 }, { "id": "0103062", "value": 148 }, { "id": "0103090", "value": 271 }, { "id": "0103120", "value": 55 }, { "id": "0103150", "value": 589 }, { "id": "0103180", "value": 80 }, { "id": "0103210", "value": 278 }, { "id": "0103240", "value": 210 }, { "id": "0103270", "value": 415 }, { "id": "0103300", "value": 467 }, { "id": "0103330", "value": 219 }, { "id": "0103360", "value": 473 }, { "id": "0103390", "value": 396 }, { "id": "0103420", "value": 440 }, { "id": "0103430", "value": 14 }, { "id": "0103450", "value": 27 }, { "id": "0103480", "value": 504 }, { "id": "0103510", "value": 461 }, { "id": "0103540", "value": 594 }, { "id": "0103580", "value": 572 } ] }
-        ];
-
-        // start when the document is ready...
-        $(function () {
-        	DevExpress.viz.vectormaputils.parse('@Url.Content("~/Assets/tl_2015_01_unsd")', { precision: 8 }, function (districtData) {
-                $('#mapContainer').dxVectorMap({
-                    center: [-87.0, 32.5],
-                    bounds: [-80, 33, -92, 33],
-                    zoomFactor: 1.85,
-                    layers: [
-                    {
-                        name: "systems",
-                        type: "area",
-                        palette: "Violet",
-                        colorGroups: [0, 10, 50, 100, 200, 500, 1000],
-                        colorGroupingField: "certCount",
-                        customize: function (elements) {
-                            // uncomment this code to generate some random colors for building more demonstration categories
-                            //$.each(elements, function (_, element) {
-                            //    // set a random value of the cert for use as sample data
-                            //    var val = Math.floor((Math.random() * 600) + 1);
-                            //    var index = element.attribute("GEOID");
-
-                            //    certs.push({ id: element.attribute("GEOID"), value : val});
-
-                            //    element.attribute("certCount", val);
-                            //});
-
-                            //$("#txtColors").text(JSON.stringify(certs));
-                        },
-                        data: districtData,
-                        borderColor: "#AAAAAA",
-                        label: {
-                            enabled: false,
-                            dataField: "NAME"
-                        },
-                        //customize: function (elements) {
-                        //    $.each(elements, function (i, element) {
-                        //        element.applySettings({ paletteIndex: i % 5 });
-                        //    });
-                        //},
-                        hoveredColor: "#AFDCAF"
-                    }
-                    ], legends: [{
-                        horizontalAlignment: "left",
-                        verticalAlignment: "top",
-                        source: { layer: "systems", grouping: "color" },
-                        customizeText: function (arg) {
-                            var text;
-                            if (arg.index === 0) {
-                                text = "< 10";
-                            }
-                            else if (arg.index === 5) {
-                                text = "> 500";
-                            }
-                            else {
-                                text = arg.start + " to " + arg.end;
-                            }
-                            return text;
-                        }
-                    }],
-                    tooltip: {
-                        enabled: true,
-                        customizeTooltip: function (arg) {
-                            if (arg.attribute("certCount")) {
-                                return { text: arg.attribute("NAME") + ": " + arg.attribute("certCount") + " " + arg.attribute("certType") };
-                            }
-                        }
-                    },
-                    onClick: function (e) {
-                        var clickedElement = e.target;
-                        if (clickedElement != null && clickedElement.layer.type == "area") {
-                            var systemCode = clickedElement.attribute("GEOID"),
-                                systemData = {
-                                    systemName: clickedElement.attribute("NAME"),
-                                    systemCode: systemCode,
-                                    certCount: clickedElement.attribute("certCount"),
-                                    certType: clickedElement.attribute("certType")
-                                };
-                            onSystemClick(systemData);
-                            alert("System Name: " + systemData.systemName + "\nsystemCode: " + systemData.systemCode + "\nCertificate counts: " + systemData.certCount + " " + systemData.certType);
-                        }
-                    }
-                });
-            });
-
-            $("#certificateChooser").dxLookup({
-                dataSource: new DevExpress.data.ArrayStore({
-                    data: selectItems,
-                    key: "id"
-                }),
-                placeholder: "Select",
-                displayExpr: "name",
-                valueExpr: "values",
-                //value: selectItems[0].values,
-                onValueChanged: function (data) {
-                    var countValues = data.itemData.values,
-                        map = $('#mapContainer').dxVectorMap('instance'),
-                        elements = map.getLayerByName('systems').getElements();
-
-                    $.each(elements, function (_, element) {
-                        var index = element.attribute("GEOID");
-                        var val = findSystemData(index, countValues);
-                        element.attribute("certCount", val.value);
-                        // tack on the drop down choice to make it easier to get to in tooltips or popups
-                        element.attribute("certType", data.itemData.name);
-                        // refresh the colors...
-                        element.applySettings({ colorGroupingField: "certCount" });
-                    });
-                }
-            });
-
-        });
-
-        var findSystemData = function (systemGeoId, countValuesArray) {
-            for (var i = 0, len = countValuesArray.length; i < len; i++) {
-                if (countValuesArray[i].id === systemGeoId)
-                    return countValuesArray[i]; // Return as soon as the object is found
-            }
-            return undefined; // The object was not found
-        }
-
-        var onSystemClick = function (systemData) {
-        }
-	</script>
-</head>
-<body>
-	<div id="mainContainer">
-		<div id="form">
-			<div class="dx-fieldset">
-				<div class="dx-fieldset-header">Certificate Counts by School System (Fake Data)</div>
-				<div class="dx-field">
-					<div class="dx-field-label">Certificate Type</div>
-					<div class="dx-field-value">
-						<div id="certificateChooser"></div>
+﻿<div class="container">
+	<div class="col-md-12">
+		<div id="mainContainer">
+			<div id="form">
+				<div class="dx-fieldset">
+					<div class="dx-fieldset-header">Certificate Counts by School System (Fake Data)</div>
+					<div class="dx-field">
+						<div class="dx-field-label">Certificate Type</div>
+						<div class="dx-field-value">
+							<div id="certificateChooser"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div>
-				<em>Note: you can also use your mouse wheel to zoom the map.</em>
-			</div>
-			<div id="mapContainer"></div>
-			<div>
-				<textarea id="txtColors"></textarea>
+				<div>
+					<em>Note: you can also use your mouse wheel to zoom the map.</em>
+				</div>
+				<div id="mapContainer"></div>
+				<div>
+					<textarea id="txtColors"></textarea>
+				</div>
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+</div>
+@section scripts {
+	<script type="text/javascript">
+		var certs = [];
+
+		// select list items that also contain fake certificate counts
+		var selectItems = [
+            { id: 0, name: "Counselor Certificates", values: [{ "id": "0100001", "value": 484 }, { "id": "0100003", "value": 597 }, { "id": "0100005", "value": 357 }, { "id": "0100006", "value": 406 }, { "id": "0100007", "value": 544 }, { "id": "0100008", "value": 565 }, { "id": "0100011", "value": 306 }, { "id": "0100012", "value": 553 }, { "id": "0100013", "value": 508 }, { "id": "0100030", "value": 546 }, { "id": "0100060", "value": 200 }, { "id": "0100090", "value": 307 }, { "id": "0100100", "value": 234 }, { "id": "0100120", "value": 101 }, { "id": "0100180", "value": 437 }, { "id": "0100185", "value": 223 }, { "id": "0100188", "value": 29 }, { "id": "0100189", "value": 571 }, { "id": "0100190", "value": 133 }, { "id": "0100210", "value": 383 }, { "id": "0100240", "value": 450 }, { "id": "0100270", "value": 294 }, { "id": "0100300", "value": 504 }, { "id": "0100330", "value": 292 }, { "id": "0100360", "value": 26 }, { "id": "0100390", "value": 92 }, { "id": "0100420", "value": 53 }, { "id": "0100450", "value": 201 }, { "id": "0100480", "value": 520 }, { "id": "0100510", "value": 469 }, { "id": "0100540", "value": 138 }, { "id": "0100600", "value": 321 }, { "id": "0100630", "value": 158 }, { "id": "0100660", "value": 489 }, { "id": "0100690", "value": 454 }, { "id": "0100720", "value": 250 }, { "id": "0100750", "value": 248 }, { "id": "0100780", "value": 520 }, { "id": "0100810", "value": 292 }, { "id": "0100840", "value": 94 }, { "id": "0100870", "value": 488 }, { "id": "0100900", "value": 224 }, { "id": "0100930", "value": 238 }, { "id": "0100960", "value": 266 }, { "id": "0100990", "value": 4 }, { "id": "0101020", "value": 110 }, { "id": "0101050", "value": 349 }, { "id": "0101080", "value": 80 }, { "id": "0101110", "value": 327 }, { "id": "0101140", "value": 141 }, { "id": "0101170", "value": 464 }, { "id": "0101200", "value": 304 }, { "id": "0101230", "value": 233 }, { "id": "0101260", "value": 87 }, { "id": "0101290", "value": 523 }, { "id": "0101320", "value": 412 }, { "id": "0101350", "value": 39 }, { "id": "0101380", "value": 466 }, { "id": "0101410", "value": 282 }, { "id": "0101440", "value": 235 }, { "id": "0101470", "value": 511 }, { "id": "0101530", "value": 572 }, { "id": "0101560", "value": 407 }, { "id": "0101590", "value": 15 }, { "id": "0101620", "value": 597 }, { "id": "0101640", "value": 359 }, { "id": "0101660", "value": 286 }, { "id": "0101680", "value": 463 }, { "id": "0101690", "value": 198 }, { "id": "0101710", "value": 5 }, { "id": "0101720", "value": 585 }, { "id": "0101730", "value": 88 }, { "id": "0101740", "value": 367 }, { "id": "0101760", "value": 543 }, { "id": "0101770", "value": 432 }, { "id": "0101800", "value": 484 }, { "id": "0101830", "value": 428 }, { "id": "0101860", "value": 93 }, { "id": "0101890", "value": 136 }, { "id": "0101920", "value": 348 }, { "id": "0101950", "value": 316 }, { "id": "0101980", "value": 310 }, { "id": "0102010", "value": 143 }, { "id": "0102040", "value": 367 }, { "id": "0102070", "value": 97 }, { "id": "0102100", "value": 323 }, { "id": "0102130", "value": 117 }, { "id": "0102160", "value": 307 }, { "id": "0102190", "value": 329 }, { "id": "0102220", "value": 471 }, { "id": "0102250", "value": 590 }, { "id": "0102310", "value": 148 }, { "id": "0102350", "value": 336 }, { "id": "0102370", "value": 18 }, { "id": "0102400", "value": 338 }, { "id": "0102430", "value": 374 }, { "id": "0102480", "value": 314 }, { "id": "0102490", "value": 232 }, { "id": "0102520", "value": 99 }, { "id": "0102550", "value": 201 }, { "id": "0102580", "value": 173 }, { "id": "0102610", "value": 528 }, { "id": "0102635", "value": 49 }, { "id": "0102640", "value": 117 }, { "id": "0102650", "value": 123 }, { "id": "0102670", "value": 256 }, { "id": "0102700", "value": 320 }, { "id": "0102730", "value": 511 }, { "id": "0102760", "value": 1 }, { "id": "0102790", "value": 234 }, { "id": "0102820", "value": 374 }, { "id": "0102850", "value": 340 }, { "id": "0102880", "value": 396 }, { "id": "0102910", "value": 440 }, { "id": "0102940", "value": 545 }, { "id": "0102970", "value": 11 }, { "id": "0103000", "value": 266 }, { "id": "0103030", "value": 503 }, { "id": "0103062", "value": 214 }, { "id": "0103090", "value": 15 }, { "id": "0103120", "value": 414 }, { "id": "0103150", "value": 532 }, { "id": "0103180", "value": 3 }, { "id": "0103210", "value": 167 }, { "id": "0103240", "value": 168 }, { "id": "0103270", "value": 276 }, { "id": "0103300", "value": 321 }, { "id": "0103330", "value": 271 }, { "id": "0103360", "value": 82 }, { "id": "0103390", "value": 351 }, { "id": "0103420", "value": 47 }, { "id": "0103430", "value": 310 }, { "id": "0103450", "value": 296 }, { "id": "0103480", "value": 464 }, { "id": "0103510", "value": 217 }, { "id": "0103540", "value": 514 }, { "id": "0103580", "value": 332 }] },
+            { id: 1, name: "Math Teacher Certifications", values: [{ "id": "0100001", "value": 358 }, { "id": "0100003", "value": 582 }, { "id": "0100005", "value": 465 }, { "id": "0100006", "value": 427 }, { "id": "0100007", "value": 475 }, { "id": "0100008", "value": 5 }, { "id": "0100011", "value": 272 }, { "id": "0100012", "value": 55 }, { "id": "0100013", "value": 367 }, { "id": "0100030", "value": 501 }, { "id": "0100060", "value": 18 }, { "id": "0100090", "value": 133 }, { "id": "0100100", "value": 322 }, { "id": "0100120", "value": 555 }, { "id": "0100180", "value": 252 }, { "id": "0100185", "value": 409 }, { "id": "0100188", "value": 501 }, { "id": "0100189", "value": 523 }, { "id": "0100190", "value": 447 }, { "id": "0100210", "value": 428 }, { "id": "0100240", "value": 135 }, { "id": "0100270", "value": 341 }, { "id": "0100300", "value": 293 }, { "id": "0100330", "value": 103 }, { "id": "0100360", "value": 155 }, { "id": "0100390", "value": 296 }, { "id": "0100420", "value": 93 }, { "id": "0100450", "value": 331 }, { "id": "0100480", "value": 108 }, { "id": "0100510", "value": 272 }, { "id": "0100540", "value": 302 }, { "id": "0100600", "value": 399 }, { "id": "0100630", "value": 67 }, { "id": "0100660", "value": 471 }, { "id": "0100690", "value": 449 }, { "id": "0100720", "value": 18 }, { "id": "0100750", "value": 359 }, { "id": "0100780", "value": 140 }, { "id": "0100810", "value": 67 }, { "id": "0100840", "value": 195 }, { "id": "0100870", "value": 63 }, { "id": "0100900", "value": 417 }, { "id": "0100930", "value": 222 }, { "id": "0100960", "value": 411 }, { "id": "0100990", "value": 123 }, { "id": "0101020", "value": 146 }, { "id": "0101050", "value": 8 }, { "id": "0101080", "value": 143 }, { "id": "0101110", "value": 50 }, { "id": "0101140", "value": 212 }, { "id": "0101170", "value": 438 }, { "id": "0101200", "value": 475 }, { "id": "0101230", "value": 587 }, { "id": "0101260", "value": 404 }, { "id": "0101290", "value": 512 }, { "id": "0101320", "value": 376 }, { "id": "0101350", "value": 1 }, { "id": "0101380", "value": 222 }, { "id": "0101410", "value": 268 }, { "id": "0101440", "value": 472 }, { "id": "0101470", "value": 553 }, { "id": "0101530", "value": 429 }, { "id": "0101560", "value": 91 }, { "id": "0101590", "value": 573 }, { "id": "0101620", "value": 397 }, { "id": "0101640", "value": 9 }, { "id": "0101660", "value": 246 }, { "id": "0101680", "value": 50 }, { "id": "0101690", "value": 412 }, { "id": "0101710", "value": 16 }, { "id": "0101720", "value": 402 }, { "id": "0101730", "value": 550 }, { "id": "0101740", "value": 100 }, { "id": "0101760", "value": 560 }, { "id": "0101770", "value": 93 }, { "id": "0101800", "value": 274 }, { "id": "0101830", "value": 389 }, { "id": "0101860", "value": 571 }, { "id": "0101890", "value": 539 }, { "id": "0101920", "value": 566 }, { "id": "0101950", "value": 528 }, { "id": "0101980", "value": 171 }, { "id": "0102010", "value": 3 }, { "id": "0102040", "value": 208 }, { "id": "0102070", "value": 299 }, { "id": "0102100", "value": 400 }, { "id": "0102130", "value": 361 }, { "id": "0102160", "value": 410 }, { "id": "0102190", "value": 22 }, { "id": "0102220", "value": 355 }, { "id": "0102250", "value": 552 }, { "id": "0102310", "value": 228 }, { "id": "0102350", "value": 385 }, { "id": "0102370", "value": 302 }, { "id": "0102400", "value": 440 }, { "id": "0102430", "value": 525 }, { "id": "0102480", "value": 173 }, { "id": "0102490", "value": 439 }, { "id": "0102520", "value": 567 }, { "id": "0102550", "value": 208 }, { "id": "0102580", "value": 297 }, { "id": "0102610", "value": 287 }, { "id": "0102635", "value": 329 }, { "id": "0102640", "value": 78 }, { "id": "0102650", "value": 461 }, { "id": "0102670", "value": 486 }, { "id": "0102700", "value": 110 }, { "id": "0102730", "value": 504 }, { "id": "0102760", "value": 162 }, { "id": "0102790", "value": 250 }, { "id": "0102820", "value": 532 }, { "id": "0102850", "value": 432 }, { "id": "0102880", "value": 472 }, { "id": "0102910", "value": 385 }, { "id": "0102940", "value": 285 }, { "id": "0102970", "value": 306 }, { "id": "0103000", "value": 134 }, { "id": "0103030", "value": 342 }, { "id": "0103062", "value": 253 }, { "id": "0103090", "value": 238 }, { "id": "0103120", "value": 237 }, { "id": "0103150", "value": 237 }, { "id": "0103180", "value": 595 }, { "id": "0103210", "value": 122 }, { "id": "0103240", "value": 252 }, { "id": "0103270", "value": 51 }, { "id": "0103300", "value": 44 }, { "id": "0103330", "value": 199 }, { "id": "0103360", "value": 511 }, { "id": "0103390", "value": 363 }, { "id": "0103420", "value": 581 }, { "id": "0103430", "value": 173 }, { "id": "0103450", "value": 49 }, { "id": "0103480", "value": 113 }, { "id": "0103510", "value": 443 }, { "id": "0103540", "value": 208 }, { "id": "0103580", "value": 108 }] },
+            { id: 2, name: "Bus Driver Certifications", values: [{ "id": "0100001", "value": 509 }, { "id": "0100003", "value": 550 }, { "id": "0100005", "value": 315 }, { "id": "0100006", "value": 210 }, { "id": "0100007", "value": 124 }, { "id": "0100008", "value": 158 }, { "id": "0100011", "value": 4 }, { "id": "0100012", "value": 232 }, { "id": "0100013", "value": 291 }, { "id": "0100030", "value": 504 }, { "id": "0100060", "value": 384 }, { "id": "0100090", "value": 542 }, { "id": "0100100", "value": 361 }, { "id": "0100120", "value": 519 }, { "id": "0100180", "value": 451 }, { "id": "0100185", "value": 476 }, { "id": "0100188", "value": 523 }, { "id": "0100189", "value": 89 }, { "id": "0100190", "value": 527 }, { "id": "0100210", "value": 413 }, { "id": "0100240", "value": 570 }, { "id": "0100270", "value": 373 }, { "id": "0100300", "value": 580 }, { "id": "0100330", "value": 543 }, { "id": "0100360", "value": 210 }, { "id": "0100390", "value": 4 }, { "id": "0100420", "value": 588 }, { "id": "0100450", "value": 432 }, { "id": "0100480", "value": 333 }, { "id": "0100510", "value": 74 }, { "id": "0100540", "value": 434 }, { "id": "0100600", "value": 587 }, { "id": "0100630", "value": 164 }, { "id": "0100660", "value": 340 }, { "id": "0100690", "value": 304 }, { "id": "0100720", "value": 573 }, { "id": "0100750", "value": 208 }, { "id": "0100780", "value": 216 }, { "id": "0100810", "value": 220 }, { "id": "0100840", "value": 120 }, { "id": "0100870", "value": 345 }, { "id": "0100900", "value": 386 }, { "id": "0100930", "value": 565 }, { "id": "0100960", "value": 552 }, { "id": "0100990", "value": 143 }, { "id": "0101020", "value": 266 }, { "id": "0101050", "value": 303 }, { "id": "0101080", "value": 180 }, { "id": "0101110", "value": 118 }, { "id": "0101140", "value": 112 }, { "id": "0101170", "value": 534 }, { "id": "0101200", "value": 498 }, { "id": "0101230", "value": 570 }, { "id": "0101260", "value": 220 }, { "id": "0101290", "value": 526 }, { "id": "0101320", "value": 409 }, { "id": "0101350", "value": 266 }, { "id": "0101380", "value": 318 }, { "id": "0101410", "value": 96 }, { "id": "0101440", "value": 38 }, { "id": "0101470", "value": 307 }, { "id": "0101530", "value": 385 }, { "id": "0101560", "value": 308 }, { "id": "0101590", "value": 457 }, { "id": "0101620", "value": 366 }, { "id": "0101640", "value": 183 }, { "id": "0101660", "value": 577 }, { "id": "0101680", "value": 287 }, { "id": "0101690", "value": 451 }, { "id": "0101710", "value": 39 }, { "id": "0101720", "value": 31 }, { "id": "0101730", "value": 433 }, { "id": "0101740", "value": 102 }, { "id": "0101760", "value": 407 }, { "id": "0101770", "value": 164 }, { "id": "0101800", "value": 270 }, { "id": "0101830", "value": 485 }, { "id": "0101860", "value": 455 }, { "id": "0101890", "value": 378 }, { "id": "0101920", "value": 287 }, { "id": "0101950", "value": 477 }, { "id": "0101980", "value": 436 }, { "id": "0102010", "value": 263 }, { "id": "0102040", "value": 562 }, { "id": "0102070", "value": 586 }, { "id": "0102100", "value": 269 }, { "id": "0102130", "value": 39 }, { "id": "0102160", "value": 443 }, { "id": "0102190", "value": 214 }, { "id": "0102220", "value": 404 }, { "id": "0102250", "value": 105 }, { "id": "0102310", "value": 268 }, { "id": "0102350", "value": 4 }, { "id": "0102370", "value": 224 }, { "id": "0102400", "value": 11 }, { "id": "0102430", "value": 220 }, { "id": "0102480", "value": 370 }, { "id": "0102490", "value": 213 }, { "id": "0102520", "value": 300 }, { "id": "0102550", "value": 99 }, { "id": "0102580", "value": 482 }, { "id": "0102610", "value": 185 }, { "id": "0102635", "value": 26 }, { "id": "0102640", "value": 536 }, { "id": "0102650", "value": 155 }, { "id": "0102670", "value": 29 }, { "id": "0102700", "value": 60 }, { "id": "0102730", "value": 322 }, { "id": "0102760", "value": 549 }, { "id": "0102790", "value": 391 }, { "id": "0102820", "value": 252 }, { "id": "0102850", "value": 498 }, { "id": "0102880", "value": 523 }, { "id": "0102910", "value": 338 }, { "id": "0102940", "value": 484 }, { "id": "0102970", "value": 494 }, { "id": "0103000", "value": 588 }, { "id": "0103030", "value": 517 }, { "id": "0103062", "value": 171 }, { "id": "0103090", "value": 486 }, { "id": "0103120", "value": 468 }, { "id": "0103150", "value": 201 }, { "id": "0103180", "value": 524 }, { "id": "0103210", "value": 378 }, { "id": "0103240", "value": 110 }, { "id": "0103270", "value": 350 }, { "id": "0103300", "value": 243 }, { "id": "0103330", "value": 20 }, { "id": "0103360", "value": 347 }, { "id": "0103390", "value": 481 }, { "id": "0103420", "value": 92 }, { "id": "0103430", "value": 493 }, { "id": "0103450", "value": 391 }, { "id": "0103480", "value": 157 }, { "id": "0103510", "value": 423 }, { "id": "0103540", "value": 213 }, { "id": "0103580", "value": 421 }] },
+            { id: 3, name: "Science Teacher Certifications", values: [{ "id": "0100001", "value": 446 }, { "id": "0100003", "value": 197 }, { "id": "0100005", "value": 475 }, { "id": "0100006", "value": 85 }, { "id": "0100007", "value": 382 }, { "id": "0100008", "value": 368 }, { "id": "0100011", "value": 335 }, { "id": "0100012", "value": 260 }, { "id": "0100013", "value": 68 }, { "id": "0100030", "value": 353 }, { "id": "0100060", "value": 51 }, { "id": "0100090", "value": 456 }, { "id": "0100100", "value": 182 }, { "id": "0100120", "value": 287 }, { "id": "0100180", "value": 497 }, { "id": "0100185", "value": 369 }, { "id": "0100188", "value": 144 }, { "id": "0100189", "value": 398 }, { "id": "0100190", "value": 310 }, { "id": "0100210", "value": 593 }, { "id": "0100240", "value": 70 }, { "id": "0100270", "value": 196 }, { "id": "0100300", "value": 92 }, { "id": "0100330", "value": 376 }, { "id": "0100360", "value": 25 }, { "id": "0100390", "value": 431 }, { "id": "0100420", "value": 428 }, { "id": "0100450", "value": 556 }, { "id": "0100480", "value": 592 }, { "id": "0100510", "value": 542 }, { "id": "0100540", "value": 136 }, { "id": "0100600", "value": 129 }, { "id": "0100630", "value": 516 }, { "id": "0100660", "value": 10 }, { "id": "0100690", "value": 41 }, { "id": "0100720", "value": 211 }, { "id": "0100750", "value": 484 }, { "id": "0100780", "value": 279 }, { "id": "0100810", "value": 384 }, { "id": "0100840", "value": 291 }, { "id": "0100870", "value": 440 }, { "id": "0100900", "value": 64 }, { "id": "0100930", "value": 173 }, { "id": "0100960", "value": 174 }, { "id": "0100990", "value": 222 }, { "id": "0101020", "value": 242 }, { "id": "0101050", "value": 412 }, { "id": "0101080", "value": 525 }, { "id": "0101110", "value": 464 }, { "id": "0101140", "value": 336 }, { "id": "0101170", "value": 568 }, { "id": "0101200", "value": 348 }, { "id": "0101230", "value": 542 }, { "id": "0101260", "value": 52 }, { "id": "0101290", "value": 255 }, { "id": "0101320", "value": 334 }, { "id": "0101350", "value": 490 }, { "id": "0101380", "value": 321 }, { "id": "0101410", "value": 222 }, { "id": "0101440", "value": 423 }, { "id": "0101470", "value": 323 }, { "id": "0101530", "value": 279 }, { "id": "0101560", "value": 549 }, { "id": "0101590", "value": 427 }, { "id": "0101620", "value": 341 }, { "id": "0101640", "value": 441 }, { "id": "0101660", "value": 36 }, { "id": "0101680", "value": 349 }, { "id": "0101690", "value": 467 }, { "id": "0101710", "value": 487 }, { "id": "0101720", "value": 356 }, { "id": "0101730", "value": 189 }, { "id": "0101740", "value": 130 }, { "id": "0101760", "value": 111 }, { "id": "0101770", "value": 371 }, { "id": "0101800", "value": 257 }, { "id": "0101830", "value": 571 }, { "id": "0101860", "value": 432 }, { "id": "0101890", "value": 410 }, { "id": "0101920", "value": 511 }, { "id": "0101950", "value": 486 }, { "id": "0101980", "value": 544 }, { "id": "0102010", "value": 1 }, { "id": "0102040", "value": 110 }, { "id": "0102070", "value": 359 }, { "id": "0102100", "value": 292 }, { "id": "0102130", "value": 32 }, { "id": "0102160", "value": 235 }, { "id": "0102190", "value": 283 }, { "id": "0102220", "value": 592 }, { "id": "0102250", "value": 594 }, { "id": "0102310", "value": 120 }, { "id": "0102350", "value": 452 }, { "id": "0102370", "value": 584 }, { "id": "0102400", "value": 212 }, { "id": "0102430", "value": 441 }, { "id": "0102480", "value": 361 }, { "id": "0102490", "value": 305 }, { "id": "0102520", "value": 352 }, { "id": "0102550", "value": 515 }, { "id": "0102580", "value": 198 }, { "id": "0102610", "value": 209 }, { "id": "0102635", "value": 188 }, { "id": "0102640", "value": 243 }, { "id": "0102650", "value": 297 }, { "id": "0102670", "value": 321 }, { "id": "0102700", "value": 27 }, { "id": "0102730", "value": 476 }, { "id": "0102760", "value": 239 }, { "id": "0102790", "value": 374 }, { "id": "0102820", "value": 325 }, { "id": "0102850", "value": 463 }, { "id": "0102880", "value": 73 }, { "id": "0102910", "value": 446 }, { "id": "0102940", "value": 61 }, { "id": "0102970", "value": 356 }, { "id": "0103000", "value": 434 }, { "id": "0103030", "value": 361 }, { "id": "0103062", "value": 148 }, { "id": "0103090", "value": 271 }, { "id": "0103120", "value": 55 }, { "id": "0103150", "value": 589 }, { "id": "0103180", "value": 80 }, { "id": "0103210", "value": 278 }, { "id": "0103240", "value": 210 }, { "id": "0103270", "value": 415 }, { "id": "0103300", "value": 467 }, { "id": "0103330", "value": 219 }, { "id": "0103360", "value": 473 }, { "id": "0103390", "value": 396 }, { "id": "0103420", "value": 440 }, { "id": "0103430", "value": 14 }, { "id": "0103450", "value": 27 }, { "id": "0103480", "value": 504 }, { "id": "0103510", "value": 461 }, { "id": "0103540", "value": 594 }, { "id": "0103580", "value": 572 }] }
+		];
+
+		// start when the document is ready...
+		$(function () {
+			DevExpress.viz.vectormaputils.parse('@Url.Content("~/Assets/tl_2015_01_unsd")', { precision: 8 }, function (districtData) {
+				$('#mapContainer').dxVectorMap({
+					center: [-87.0, 32.5],
+					bounds: [-80, 33, -92, 33],
+					zoomFactor: 1.85,
+					layers: [
+                    {
+                    	name: "systems",
+                    	type: "area",
+                    	palette: "Violet",
+                    	colorGroups: [0, 10, 50, 100, 200, 500, 1000],
+                    	colorGroupingField: "certCount",
+                    	customize: function (elements) {
+                    		// uncomment this code to generate some random colors for building more demonstration categories
+                    		//$.each(elements, function (_, element) {
+                    		//    // set a random value of the cert for use as sample data
+                    		//    var val = Math.floor((Math.random() * 600) + 1);
+                    		//    var index = element.attribute("GEOID");
+
+                    		//    certs.push({ id: element.attribute("GEOID"), value : val});
+
+                    		//    element.attribute("certCount", val);
+                    		//});
+
+                    		//$("#txtColors").text(JSON.stringify(certs));
+                    	},
+                    	data: districtData,
+                    	borderColor: "#AAAAAA",
+                    	label: {
+                    		enabled: false,
+                    		dataField: "NAME"
+                    	},
+                    	//customize: function (elements) {
+                    	//    $.each(elements, function (i, element) {
+                    	//        element.applySettings({ paletteIndex: i % 5 });
+                    	//    });
+                    	//},
+                    	hoveredColor: "#AFDCAF"
+                    }
+					], legends: [{
+						horizontalAlignment: "left",
+						verticalAlignment: "top",
+						source: { layer: "systems", grouping: "color" },
+						customizeText: function (arg) {
+							var text;
+							if (arg.index === 0) {
+								text = "< 10";
+							}
+							else if (arg.index === 5) {
+								text = "> 500";
+							}
+							else {
+								text = arg.start + " to " + arg.end;
+							}
+							return text;
+						}
+					}],
+					tooltip: {
+						enabled: true,
+						customizeTooltip: function (arg) {
+							if (arg.attribute("certCount")) {
+								return { text: arg.attribute("NAME") + ": " + arg.attribute("certCount") + " " + arg.attribute("certType") };
+							}
+						}
+					},
+					onClick: function (e) {
+						var clickedElement = e.target;
+						if (clickedElement != null && clickedElement.layer.type == "area") {
+							var systemCode = clickedElement.attribute("GEOID"),
+                                systemData = {
+                                	systemName: clickedElement.attribute("NAME"),
+                                	systemCode: systemCode,
+                                	certCount: clickedElement.attribute("certCount"),
+                                	certType: clickedElement.attribute("certType")
+                                };
+							onSystemClick(systemData);
+							alert("System Name: " + systemData.systemName + "\nsystemCode: " + systemData.systemCode + "\nCertificate counts: " + systemData.certCount + " " + systemData.certType);
+						}
+					}
+				});
+			});
+
+			$("#certificateChooser").dxLookup({
+				dataSource: new DevExpress.data.ArrayStore({
+					data: selectItems,
+					key: "id"
+				}),
+				placeholder: "Select",
+				displayExpr: "name",
+				valueExpr: "values",
+				//value: selectItems[0].values,
+				onValueChanged: function (data) {
+					var countValues = data.itemData.values,
+                        map = $('#mapContainer').dxVectorMap('instance'),
+                        elements = map.getLayerByName('systems').getElements();
+
+					$.each(elements, function (_, element) {
+						var index = element.attribute("GEOID");
+						var val = findSystemData(index, countValues);
+						element.attribute("certCount", val.value);
+						// tack on the drop down choice to make it easier to get to in tooltips or popups
+						element.attribute("certType", data.itemData.name);
+						// refresh the colors...
+						element.applySettings({ colorGroupingField: "certCount" });
+					});
+				}
+			});
+
+		});
+
+		var findSystemData = function (systemGeoId, countValuesArray) {
+			for (var i = 0, len = countValuesArray.length; i < len; i++) {
+				if (countValuesArray[i].id === systemGeoId)
+					return countValuesArray[i]; // Return as soon as the object is found
+			}
+			return undefined; // The object was not found
+		}
+
+		var onSystemClick = function (systemData) {
+		}
+	</script>
+}
